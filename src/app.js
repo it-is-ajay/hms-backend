@@ -4,7 +4,7 @@ import controller from './controller/index.js';
 import middleware from './middleware/index.js';
 import cors from 'cors';
 
-const { userController } = controller;
+const { userController, doctorController } = controller;
 const { userMiddleware } = middleware;
 
 const app = express();
@@ -24,6 +24,11 @@ app.post(
     '/user/login',
     userMiddleware.checkEmailPassword,
     userController.login,
+);
+
+app.get(
+    '/user/doctor-list',
+    doctorController.getDoctorList,
 );
 
 
